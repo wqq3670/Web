@@ -22,6 +22,9 @@ public class Main {
     public static void main(String[] args) {
         A a = new A();
         B b = new B();
+
+        //给b设置较高的优先级,
+        // 但是优先级只是对系统的一个建议，而不是强制
         b.setPriority(Thread.MAX_PRIORITY);
 
         a.start();

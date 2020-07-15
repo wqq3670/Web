@@ -30,7 +30,7 @@ public class DBUtil {
                 if(DATASOURCE == null) {
                     DATASOURCE = new MysqlDataSource();
                     ((MysqlDataSource) DATASOURCE).setUrl(url);
-                    ((MysqlDataSource) DATASOURCE).setPassword(username);
+                    ((MysqlDataSource) DATASOURCE).setUser(username);
                     ((MysqlDataSource) DATASOURCE).setPassword(password);
 
                 }
@@ -39,7 +39,7 @@ public class DBUtil {
         return DATASOURCE;
     }
     public static Connection getConnection(){
-        System.out.println("getConnection1");
+        //System.out.println("getConnection1");
         try {
             //从池子里获取连接
             Connection connection = (Connection) getDataSource().getConnection();
@@ -61,6 +61,13 @@ public class DBUtil {
         if(statement != null) {
             try{
                 statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if(connection != null) {
+            try{
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

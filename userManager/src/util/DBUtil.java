@@ -50,6 +50,12 @@ public class DBUtil {
         }
     }
 
+    /**
+     * 关闭connection statement resultSet 的方法，方便Dao层的调用
+     * @param connection
+     * @param statement
+     * @param resultSet
+     */
     public static void close(Connection connection, PreparedStatement statement, ResultSet resultSet) {
         if(resultSet != null) {
             try {

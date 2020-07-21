@@ -29,7 +29,7 @@
         function load(rows,currentPage,name,address,email){
             console.log(rows,currentPage,name,address,email);
             $.ajax({
-                url:"/usermanager/findByPageServlet",
+                url:"/findByPageServlet",
                 data: {currentPage:currentPage,rows:rows,name:name,address:address,email:email},
                 type:"POST",
                 dataType:"json",

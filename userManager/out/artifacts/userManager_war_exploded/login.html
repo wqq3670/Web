@@ -40,7 +40,7 @@
 				var username=$("#user").val();
 				var password=$("#password").val();
 				$.ajax({
-					url:"/usermanager/loginServlet",
+					url:"/loginServlet",
                     data:{"username":username,"password":password},
                     type:"POST",
 					dataType:"json",

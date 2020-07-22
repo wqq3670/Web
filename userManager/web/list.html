@@ -36,7 +36,7 @@
                 //fp中存放的是所有的用户信息
                 success:function (fp) {
                     console.log(fp);
-                    var lis='';
+                    /*var lis='';
                     for(var i=0;i<fp.list.length;i++){
                         var j=i+1;
                         var tr=' <tr>\n' +
@@ -48,8 +48,8 @@
                         '            <td>'+fp.list[i].address+'</td>\n' +
                         '            <td>'+fp.list[i].qq+'</td>\n' +
                         '            <td>'+fp.list[i].email+'</td>\n' +
-                        '            <td><a class="btn btn-default btn-sm" href="/usermanager/findUserServlet?id='+fp.list[i].id+'">修改</a>&nbsp;' +
-                            '<a class="btn btn-default btn-sm" href="/usermanager/deleteServlet?id='+fp.list[i].id+'">删除</a></td>\n' +
+                        '            <td><a class="btn btn-default btn-sm" href="/findUserServlet?id='+fp.list[i].id+'">修改</a>&nbsp;' +
+                            '<a class="btn btn-default btn-sm" href="/deleteServlet?id='+fp.list[i].id+'">删除</a></td>\n' +
                         '        </tr>';
                         lis+=tr;
                     }
@@ -104,7 +104,7 @@
                         '                    共'+fp.totalCount+'条记录，共'+fp.totalPage+'页\n' +
                         '                </span>';
                     result_lis+=span;
-                    $("#all").html(result_lis);
+                    $("#all").html(result_lis);*/
 
                 }
             })

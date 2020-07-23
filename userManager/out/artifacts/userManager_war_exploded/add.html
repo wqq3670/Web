@@ -30,7 +30,7 @@
                 var qq=$("#qq").val();
                 var email=$("#email").val();
                 $.ajax({
-                    url:"/usermanager/addServlet",
+                    url:"/addServlet",
                     data:{"name":name,"gender":gender,"age":age,"address":address,"qq":qq,"email":email},
                     type:"post",
                     dataType:"json",
@@ -39,7 +39,7 @@
                         if(data.msg===true){
                             //成功了
                             alert("添加成功");
-                            window.location.href="/usermanager/list.html";
+                            window.location.href="/list.html";
                         }else{
                             alert("添加失败");
                         }
@@ -52,7 +52,7 @@
                 });
             });
             $("#return").click(function () {
-                window.location.href="/usermanager/list.html";
+                window.location.href="/list.html";
             });
             $("#reset").click(function () {
                 $("#name").val("");

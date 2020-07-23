@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- 网页使用的语言 -->
 <html lang="zh-CN">
@@ -18,14 +19,14 @@
     <!-- 2. jQuery导入，建议使用1.9以上的版本 -->
     <script src="js/jquery-2.1.0.min.js"></script>
     <!-- 3. 导入bootstrap的js文件 -->
-   <!-- <script src="js/bootstrap.min.js"></script>-->
+    <!-- <script src="js/bootstrap.min.js"></script>-->
     <style type="text/css">
         td, th {
             text-align: center;
         }
     </style>
     <script type="text/javascript">
-
+        // 5 ,1 null,null.null
         function load(rows,currentPage,name,address,email){
             console.log(rows,currentPage,name,address,email);
             $.ajax({
@@ -36,21 +37,21 @@
                 //fp中存放的是所有的用户信息
                 success:function (fp) {
                     console.log(fp);
-                    /*var lis='';
+                    var lis='';
                     for(var i=0;i<fp.list.length;i++){
                         var j=i+1;
                         var tr=' <tr>\n' +
-                        '            <th><input id="'+fp.list[i].id+'" type="checkbox"></th>'+
-                        '            <td>'+j+'</td>\n' +
-                        '            <td>'+fp.list[i].name+'</td>\n' +
-                        '            <td>'+fp.list[i].gender+'</td>\n' +
-                        '            <td>'+fp.list[i].age+'</td>\n' +
-                        '            <td>'+fp.list[i].address+'</td>\n' +
-                        '            <td>'+fp.list[i].qq+'</td>\n' +
-                        '            <td>'+fp.list[i].email+'</td>\n' +
-                        '            <td><a class="btn btn-default btn-sm" href="/findUserServlet?id='+fp.list[i].id+'">修改</a>&nbsp;' +
+                            '            <th><input id="'+fp.list[i].id+'" type="checkbox"></th>'+
+                            '            <td>'+j+'</td>\n' +
+                            '            <td>'+fp.list[i].name+'</td>\n' +
+                            '            <td>'+fp.list[i].gender+'</td>\n' +
+                            '            <td>'+fp.list[i].age+'</td>\n' +
+                            '            <td>'+fp.list[i].address+'</td>\n' +
+                            '            <td>'+fp.list[i].qq+'</td>\n' +
+                            '            <td>'+fp.list[i].email+'</td>\n' +
+                            '            <td><a class="btn btn-default btn-sm" href="/findUserServlet?id='+fp.list[i].id+'">修改</a>&nbsp;' +
                             '<a class="btn btn-default btn-sm" href="/deleteServlet?id='+fp.list[i].id+'">删除</a></td>\n' +
-                        '        </tr>';
+                            '        </tr>';
                         lis+=tr;
                     }
                     $("#info").html(lis);
@@ -81,7 +82,7 @@
                         '                    </a>\n' +
                         '                </li>';
                     //动态生成换页 <a href="javascript:load('+5+','+pre+',&quot;'+name+'&quot;,'+address+','+email+')" aria-label="Previous">\n' +
-                   var result_lis='';
+                    var result_lis='';
                     result_lis+=prePage;
                     for(var i=1;i<=fp.totalPage;i++){
                         if(currentPage===i){
@@ -104,11 +105,12 @@
                         '                    共'+fp.totalCount+'条记录，共'+fp.totalPage+'页\n' +
                         '                </span>';
                     result_lis+=span;
-                    $("#all").html(result_lis);*/
+                    $("#all").html(result_lis);
 
                 }
             })
         }
+
         $(function () {
             load(5,1);
         });
@@ -136,7 +138,7 @@
                     });
                     //发送ajax请求
                     $.ajax({
-                        url:"/usermanager/deleteSelectedServlet",
+                        url:"/deleteSelectedServlet",
                         //将id数组，发送给deleteSelectedServlet
                         data:{"id":id},
                         type: "POST",
@@ -144,7 +146,7 @@
                         success:function (data) {
                             if(data.msg===true){
                                 alert("删除成功");
-                                window.location.href="/usermanager/list.html";
+                                window.location.href="/list.html";
                             }else{
                                 alert("删除失败");
                             }
@@ -177,7 +179,7 @@
     </div>
     <div style="float: right;margin-bottom: 15px">
 
-        <a class="btn btn-primary" href="/usermanager/add.html">添加联系人</a>
+        <a class="btn btn-primary" href="/add.html">添加联系人</a>
         <a id="delete" class="btn btn-primary">删除选中</a>
 
     </div>

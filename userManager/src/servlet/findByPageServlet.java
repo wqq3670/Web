@@ -43,8 +43,8 @@ public class findByPageServlet extends HttpServlet {
 
         //解决上述问题只要新建一个map集合，把parMap传进去，在map集合中进行删除就好了
         Map<String,String[]> map = new HashMap<>(parMap);
-        map.remove(currentPage);
-        map.remove(rows);
+        map.remove("currentPage");
+        map.remove("rows");
 
         for(Map.Entry<String,String[]> entry : parMap.entrySet()) {
             System.out.println("key: "+entry.getKey()+" value"+Arrays.toString(entry.getValue()));
@@ -56,7 +56,7 @@ public class findByPageServlet extends HttpServlet {
         UserService userService = new UserService();
         PageBean<User> pageBean = userService.findAllByPage(currentpage,rowspage,map);
 
-        //把登陆成功的map返回给前端 json 便于前端处理
+        //把获取到的pageBean返回给前端 json 便于前端处理
         ObjectMapper objectMapper = new ObjectMapper();
         //就是将pageBean转换为json字符串
         objectMapper.writeValue(resp.getWriter(),pageBean);

@@ -1,6 +1,7 @@
 package servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import entiy.User;
 import service.UserService;
 
 import javax.servlet.ServletException;
@@ -16,29 +17,37 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * Description:
  * User: dell
- * Date: 2020-07-23
- * Time: 18:33
+ * Date: 2020-07-24
+ * Time: 0:58
  **/
-@WebServlet("/deleteSelectedServlet")
-public class deleteSelectedServlet extends HttpServlet {
+@WebServlet("/addServlet")
+public class addServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("application/json;charset=utf-8");
 
-        //前端中删除选中，可能选中多个，所以传给后端一个id[]
-        String[] values = req.getParameterValues("id[]");
+        String name = req.getParameter("name");
+        String gender = req.getParameter("gender");
+        String ageString = req.getParameter("age");
+        int age = Integer.parseInt(ageString);
+        String address = req.getParameter("address");
+        String qq = req.getParameter("qq");
+        String email = req.getParameter("email");
+
+        User addUser = new User();
+        addUser.setName(name);
+        addUser.setGender(gender);
+        addUser.setAge(age);
+        addUser.setAddress(address);
+        addUser.setQq(qq);
+        addUser.setEmail(email);
 
         UserService userService = new UserService();
-        int sum = 0;
-        for (int i = 0; i < values.length; i++) {
-            int j = Integer.parseInt(values[i]);
-            int delete = userService.delete(j);
-            sum += delete;
-        }
+        int ret = userService.add(addUser);
 
         Map<String,Object> returnMap = new HashMap<>();
-        if(sum == values.length) {
+        if(ret == 1) {
             returnMap.put("msg",true);
         }else {
             returnMap.put("msg",false);
@@ -46,5 +55,6 @@ public class deleteSelectedServlet extends HttpServlet {
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(resp.getWriter(),returnMap);
+
     }
 }

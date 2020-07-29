@@ -30,7 +30,7 @@ public class deleteServlet extends HttpServlet {
 
         int ret = userService.delete(id);
         if(ret == 1) {
-            resp.sendRedirect("/list.html");
+            resp.sendRedirect("/usermanger/list.html");
         }else {
             System.out.println("删除失败");
             resp.getWriter().write("<h2 删除失败！>" + "</h2>");

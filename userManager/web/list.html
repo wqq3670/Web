@@ -30,7 +30,7 @@
         function load(rows,currentPage,name,address,email){
             console.log(rows,currentPage,name,address,email);
             $.ajax({
-                url:"/findByPageServlet",
+                url:"/usermanger/findByPageServlet",
                 data: {currentPage:currentPage,rows:rows,name:name,address:address,email:email},
                 type:"POST",
                 dataType:"json",
@@ -49,8 +49,8 @@
                             '            <td>'+fp.list[i].address+'</td>\n' +
                             '            <td>'+fp.list[i].qq+'</td>\n' +
                             '            <td>'+fp.list[i].email+'</td>\n' +
-                            '            <td><a class="btn btn-default btn-sm" href="/findUserServlet?id='+fp.list[i].id+'">修改</a>&nbsp;' +
-                            '<a class="btn btn-default btn-sm" href="/deleteServlet?id='+fp.list[i].id+'">删除</a></td>\n' +
+                            '            <td><a class="btn btn-default btn-sm" href="/usermanger/findUserServlet?id='+fp.list[i].id+'">修改</a>&nbsp;' +
+                            '<a class="btn btn-default btn-sm" href="/usermanger/deleteServlet?id='+fp.list[i].id+'">删除</a></td>\n' +
                             '        </tr>';
                         lis+=tr;
                     }
@@ -138,7 +138,7 @@
                     });
                     //发送ajax请求
                     $.ajax({
-                        url:"/deleteSelectedServlet",
+                        url:"/usermanger/deleteSelectedServlet",
                         //将id数组，发送给deleteSelectedServlet
                         data:{"id":id},
                         type: "POST",
@@ -146,7 +146,7 @@
                         success:function (data) {
                             if(data.msg===true){
                                 alert("删除成功");
-                                window.location.href="/list.html";
+                                window.location.href="/usermanger/list.html";
                             }else{
                                 alert("删除失败");
                             }
@@ -179,7 +179,7 @@
     </div>
     <div style="float: right;margin-bottom: 15px">
 
-        <a class="btn btn-primary" href="/add.html">添加联系人</a>
+        <a class="btn btn-primary" href="/usermanger/add.html">添加联系人</a>
         <a id="delete" class="btn btn-primary">删除选中</a>
 
     </div>

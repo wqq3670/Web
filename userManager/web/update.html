@@ -16,7 +16,7 @@
         $(function () {
             //发送ajax请求
             $.ajax({
-                url:"/returnServlet",
+                url:"/usermanger/returnServlet",
                 type:"POST",
                 dataType:"json",
                 success:function (data) {
@@ -39,10 +39,12 @@
                 }
             });
             $("#return").click(function () {
-                window.location.href="/list.html";
+                window.location.href="/usermanger/list.html";
             });
             $("#reset").click(function () {
-                $("from").val("");
+                $("#age").val("");
+                $("#qq").val("");
+                $("#email").val("");
             });
             $("#submit").click(function () {
                 var name=$("#name").val();
@@ -52,14 +54,14 @@
                 var qq=$("#qq").val();
                 var email=$("#email").val();
                 $.ajax({
-                    url:"/updateServlet",
+                    url:"/usermanger/updateServlet",
                     data:{"name":name,"gender":gender,"age":age,"address":address,"qq":qq,"email":email},
                     type:"POST",
                     dataType:"json",
                     success:function (data) {
                         if(data.msg===true){
                             alert("更新成功");
-                            window.location.href="/list.html";
+                            window.location.href="/usermanger/list.html";
                         }else{
                             alert("更新失败");
                         }

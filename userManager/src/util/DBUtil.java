@@ -17,7 +17,8 @@ import java.sql.SQLException;
  * Time: 20:04
  **/
 public class DBUtil {
-    private static String url ="jdbc:mysql://127.0.0.1:3306/usermanger?useSSL=false";
+    //private static String url ="jdbc:mysql://127.0.0.1:3306/usermanger?useSSL=false";
+    private static String url ="jdbc:mysql://106.53.70.186:3306/usermanger?serverTimezone=UTC&useUnicode=true&charaterEncoding=utf-8&useSSL=false";
     private static String password = "";
     private static String username = "root";
 

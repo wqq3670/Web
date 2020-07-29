@@ -40,14 +40,14 @@
 				var username=$("#user").val();
 				var password=$("#password").val();
 				$.ajax({
-					url:"/loginServlet",
+					url:"/usermanger/loginServlet",
                     data:{"username":username,"password":password},
                     type:"POST",
 					dataType:"json",
 					success:function (data) {
                         console.log(data);
                         if(data.msg===true){
-                            window.location.href="list.html";
+                            window.location.href="/usermanger/list.html";
                         }else{
                             /*window.location.reload();*/
                             $("#message").text("账号或密码错误，请重试!");
